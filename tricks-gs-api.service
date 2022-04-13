@@ -1,0 +1,15 @@
+[Unit]
+     Description = Curie Tricks GS API
+     After network.target = tricks-gs-api.service
+
+[Service]
+     Type = forking
+     Restart=always
+     RestartSec=1
+     SuccessExitStatus=143
+     ExecStart = /bin/bash /usr/local/bin/tricks-gs-api.sh start
+     ExecStop = /bin/bash /usr/local/bin/tricks-gs-api.sh stop
+     ExecReload = /bin/bash /usr/local/bin/tricks-gs-api.sh reload
+
+[Install]
+     WantedBy=multi-user.target
